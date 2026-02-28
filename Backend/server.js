@@ -46,7 +46,13 @@ app.get("/api/test", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/files", uploadRoute);
 app.use("/api", aiRoutes);
+/* ===========================
+   ✅ ROOT ROUTE
+=========================== */
 
+app.get("/", (req, res) => {
+  res.send("🚀 Excel Analytics Backend Running Successfully");
+});
 /* ===========================
    ✅ 404 HANDLER
 =========================== */
@@ -63,10 +69,14 @@ connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected ✅");
 
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT} 🚀`);
-    });
+    if (process.env.NODE_ENV !== "production") {
+      app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT} 🚀`);
+      });
+    }
   })
   .catch((err) => {
     console.error("MongoDB connection error ❌:", err);
   });
+
+export default app;

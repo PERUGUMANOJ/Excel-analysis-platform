@@ -8,11 +8,10 @@ import authMiddleware from "../middleware/authmiddleware.js";
 
 const router = express.Router();
 
-// ✅ Stable uploads path
-const uploadPath = path.join(process.cwd(), "uploads");
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath);
-}
+import os from "os";
+
+// ✅ Stable uploads path for Vercel
+const uploadPath = os.tmpdir();
 
 // Multer config
 const storage = multer.diskStorage({

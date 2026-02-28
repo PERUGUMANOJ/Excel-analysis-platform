@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import API_BASE_URL from "../api/api";
 
 export default function ProtectedRoute({ children, role }) {
   const [authStatus, setAuthStatus] = useState("loading");
@@ -9,7 +10,7 @@ export default function ProtectedRoute({ children, role }) {
     async function checkAuth() {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/auth/profile", // ✅ LOCAL BACKEND
+          `${API_BASE_URL}/api/auth/profile`, // ✅ USES API_BASE_URL
           {
             method: "GET",
             credentials: "include", // send cookie

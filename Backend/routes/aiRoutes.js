@@ -4,6 +4,7 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import os from "os";
 import { analyzeExcelWithAI } from "../controllers/aiController.js";
 
 const router = express.Router();
@@ -11,11 +12,7 @@ const router = express.Router();
 // Store uploads in /uploads with unique file name
 const storage = multer.diskStorage({
     destination: (_req, _file, cb) => {
-        const uploadPath = path.join(process.cwd(), "uploads");
-        if (!fs.existsSync(uploadPath)) {
-            fs.mkdirSync(uploadPath, { recursive: true });
-        }
-        cb(null, uploadPath);
+        cb(null, os.tmpdir());
     },
     filename: (_req, file, cb) => {
         cb(null, `${Date.now()}-${file.originalname}`);

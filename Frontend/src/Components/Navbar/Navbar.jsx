@@ -3,6 +3,7 @@ import img4 from "../../assets/logo1.svg";
 import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API_BASE_URL from "../api/api";
 
 export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   const [showProfile, setShowProfile] = useState(false);
@@ -10,7 +11,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
 
   const handleLogout = async (reason = "expired") => {
     try {
-      await fetch("http://localhost:5000/api/auth/logout", {
+      await fetch(`${API_BASE_URL}/api/auth/logout`, {
         method: "POST",
         credentials: "include",
       });
@@ -38,7 +39,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/profile", {
+        const res = await fetch(`${API_BASE_URL}/api/auth/profile`, {
           method: "GET",
           credentials: "include",
         });
