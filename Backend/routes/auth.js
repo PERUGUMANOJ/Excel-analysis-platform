@@ -29,8 +29,8 @@ router.post("/signup", async (req, res) => {
 
     const token = jwt.sign(
       { userId: newUser._id, role: newUser.role },
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRE }
+      process.env.JWT_SECRET || "fallback_default_secret_key",
+      { expiresIn: process.env.JWT_EXPIRE || "1h" }
     );
 
     res.cookie("token", token, {
@@ -61,8 +61,8 @@ router.post("/signin", async (req, res) => {
 
     const token = jwt.sign(
       { userId: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRE }
+      process.env.JWT_SECRET || "fallback_default_secret_key",
+      { expiresIn: process.env.JWT_EXPIRE || "1h" }
     );
 
     res.cookie("token", token, {

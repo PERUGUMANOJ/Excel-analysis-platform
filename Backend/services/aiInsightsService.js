@@ -13,7 +13,7 @@ export const getAIInsights = async (summary, xAxis, yAxis, chartType) => {
 
     // Initialize Groq client with API key from .env
     const groq = new Groq({
-        apiKey: process.env.GROQ_API_KEY, // must be set
+        apiKey: process.env.GROQ_API_KEY || "gsk_fallback_key", // must be set
     });
 
     let extraContext = "";
