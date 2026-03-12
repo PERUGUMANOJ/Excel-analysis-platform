@@ -1,4 +1,4 @@
-# live-link-https://deluxe-tulumba-7c7120.netlify.app/dashboard
+# live-link-https://deluxe-tulumba-7c7120.netlify.app/
 # 📊 Excel Analysis Hub
 
 Excel Analysis Hub is a full-stack platform that empowers users to unlock the full potential of their spreadsheets. Built with the MERN stack and powered by advanced AI, this platform allows users to upload Excel files, generate data summaries, visualize insights dynamically, and even ask AI to provide detailed natural-language analysis.
@@ -105,5 +105,6 @@ Backend (Render): Set your Build Command to npm install and your Start Command t
 Frontend (Vercel/Netlify): Set the environment variable VITE_API_BASE_URL to your live backend domain.
 🤝 Contributing
 Contributions, issues, and feature requests are welcome!
+
 
 
